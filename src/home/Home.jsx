@@ -1,15 +1,23 @@
-import Banner from './Banner';
-import AddTask from '../task/addTask/AddTask';
-import PrivateRoute from '../privateRoute/PrivateRoute';
-import TaskBoard from '../task/taskBoard/TaskBoard';
+import { useContext } from "react";
+import Banner from "./Banner";
+import AddTask from "../task/addTask/AddTask";
+import TaskBoard from "../task/taskBoard/TaskBoard";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Home = () => {
+    const { user } = useContext(AuthContext); 
+
     return (
         <div>
-           <Banner></Banner>
-          
-           <PrivateRoute> <AddTask></AddTask></PrivateRoute> 
-           <TaskBoard></TaskBoard>
+            <Banner />
+            
+            {/* Show tasks only if user is logged in */}
+            {user && (
+                <>
+                    <AddTask />
+                    <TaskBoard />
+                </>
+            )}
         </div>
     );
 };

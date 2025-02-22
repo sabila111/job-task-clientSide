@@ -14,7 +14,7 @@ const AddTask = () => {
         const timestamp = startDate;
         const addReview = { category, title, description, timestamp };
 
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://job-task-server-ten-hazel.vercel.app/jobs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -40,7 +40,7 @@ const AddTask = () => {
     };
 
     return (
-        <div className='mt-10'>
+        <div className='my-14'>
             <h1 className='text-4xl font-bold text-center'>Task Management</h1>
             <div className='w-40 mx-auto my-10'>
                 <button 
